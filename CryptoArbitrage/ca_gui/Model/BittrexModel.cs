@@ -7,32 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ca_core.Yobit;
+using ca_core.Bittrex;
 using ca_gui;
+using System.Globalization;
 
 namespace ca_gui.Model
 {
-    public partial class YobitModel : UserControl
+    public partial class BittrexModel : UserControl
     {
-        public YobitModel()
+        public BittrexModel()
         {
             InitializeComponent();
         }
 
-        public void SetStatus(YobitResponse coinInfo)
+        public void SetStatus(MarketSummaryResponse coinInfo)
         {
-            this.txb_buy.Text = coinInfo.buy;
-            this.txb_coin_vol.Text = coinInfo.vol;
-            this.txb_sell.Text = coinInfo.sell;
+            this.txb_buy.Text = coinInfo.Ask;
+            this.txb_coin_vol.Text = coinInfo.Volumn;
+            this.txb_sell.Text = coinInfo.Bid;
 
             DateTime localDate = DateTime.Now;
 
             try
             {
-                if (coinInfo.updated != null)
+                if (coinInfo.TimeStamp != null)
                 {
-                    double server_update_time = double.Parse(coinInfo.updated);
-                    DateTime server_update_dt = Helper.ConvertFromUnixTimestamp(server_update_time);
+                    DateTime server_update_dt = DateTime.ParseExact(coinInfo.TimeStamp, "MM/dd/yyyy h:mm:ss tt", CultureInfo.InvariantCulture);
 
                     TimeSpan diff = localDate.ToUniversalTime() - server_update_dt;
 
@@ -45,7 +45,7 @@ namespace ca_gui.Model
             }
             catch (FormatException e)
             {
-                Console.WriteLine("YobitModel : (SetYobitStatus), " + e.Message);
+                Console.WriteLine("Bittrex : (SetStatus), " + e.Message);
             }
         }
     }

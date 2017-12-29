@@ -40,10 +40,11 @@
             this.pan_margin_top = new System.Windows.Forms.Panel();
             this.pan_margin_left = new System.Windows.Forms.Panel();
             this.pan_site_main = new System.Windows.Forms.Panel();
+            this.yobitModel2 = new ca_gui.Model.YobitModel();
             this.main_scb_veritical = new System.Windows.Forms.VScrollBar();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.yobitModel2 = new ca_gui.Model.YobitModel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bittrexModel1 = new ca_gui.Model.BittrexModel();
             this.pan_header.SuspendLayout();
             this.pan_main.SuspendLayout();
             this.pan_site_main.SuspendLayout();
@@ -158,20 +159,13 @@
             // pan_site_main
             // 
             this.pan_site_main.BackColor = System.Drawing.Color.Gray;
+            this.pan_site_main.Controls.Add(this.bittrexModel1);
             this.pan_site_main.Controls.Add(this.yobitModel2);
             this.pan_site_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pan_site_main.Location = new System.Drawing.Point(0, 0);
             this.pan_site_main.Name = "pan_site_main";
             this.pan_site_main.Size = new System.Drawing.Size(1258, 637);
             this.pan_site_main.TabIndex = 1;
-            // 
-            // main_scb_veritical
-            // 
-            this.main_scb_veritical.Dock = System.Windows.Forms.DockStyle.Right;
-            this.main_scb_veritical.Location = new System.Drawing.Point(1258, 0);
-            this.main_scb_veritical.Name = "main_scb_veritical";
-            this.main_scb_veritical.Size = new System.Drawing.Size(21, 637);
-            this.main_scb_veritical.TabIndex = 0;
             // 
             // yobitModel2
             // 
@@ -184,11 +178,30 @@
             this.yobitModel2.Size = new System.Drawing.Size(1238, 167);
             this.yobitModel2.TabIndex = 1;
             // 
+            // main_scb_veritical
+            // 
+            this.main_scb_veritical.Dock = System.Windows.Forms.DockStyle.Right;
+            this.main_scb_veritical.Location = new System.Drawing.Point(1258, 0);
+            this.main_scb_veritical.Name = "main_scb_veritical";
+            this.main_scb_veritical.Size = new System.Drawing.Size(21, 637);
+            this.main_scb_veritical.TabIndex = 0;
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // bittrexModel1
+            // 
+            this.bittrexModel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bittrexModel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.bittrexModel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(90)))), ((int)(((byte)(115)))));
+            this.bittrexModel1.Location = new System.Drawing.Point(9, 184);
+            this.bittrexModel1.Name = "bittrexModel1";
+            this.bittrexModel1.Size = new System.Drawing.Size(1238, 167);
+            this.bittrexModel1.TabIndex = 2;
             // 
             // Dashboard
             // 
@@ -227,6 +240,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private Model.YobitModel yobitModel2;
         private System.Windows.Forms.Timer timer1;
+        private Model.BittrexModel bittrexModel1;
     }
 }
 

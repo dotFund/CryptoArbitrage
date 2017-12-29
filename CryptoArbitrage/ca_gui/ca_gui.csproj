@@ -85,7 +85,14 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Item\ComboboxItem.cs" />
+    <Compile Include="Model\BittrexModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Model\BittrexModel.Designer.cs">
+      <DependentUpon>BittrexModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\YobitModel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\BittrexModel.resx">
+      <DependentUpon>BittrexModel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\YobitModel.resx">
       <DependentUpon>YobitModel.cs</DependentUpon>

@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ca_gui.Properties;
 using ca_gui.Item;
 using ca_core.Yobit;
+using ca_core.Bittrex;
 
 namespace ca_gui
 {
     public partial class Dashboard : Form
     {
         public YobitPage yobitPageInstance;
+        public BittrexPage bittrexPageInstance;
 
         public Dashboard()
         {
@@ -51,15 +46,24 @@ namespace ca_gui
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            yobitPageInstance = new YobitPage();
             ComboboxItem item = (ComboboxItem)this.cmb_coin_name.SelectedItem;
+
+            //Yobit thread start...
+            yobitPageInstance = new YobitPage();
+            
             yobitPageInstance.setParam(item.Text, "usd");
             yobitPageInstance.start();
+
+            //Bittrex thread start...
+            bittrexPageInstance = new BittrexPage();
+            bittrexPageInstance.setParam("usdt", item.Text);
+            bittrexPageInstance.start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.yobitModel2.SetYobitStatus(yobitPageInstance.YobitCoinInfo);
+            this.yobitModel2.SetStatus(yobitPageInstance.YobitCoinInfo);
+            this.bittrexModel1.SetStatus(bittrexPageInstance.marketSummaryResponse);
         }
     }
 }
